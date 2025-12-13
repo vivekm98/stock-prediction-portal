@@ -1,17 +1,17 @@
 import { useContext } from "react";
 import Button from "./Button";
-import { Link ,useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider";
 const Header = () => {
 	const { IsLoggedin, setIsLoggedin } = useContext(AuthContext);
-  const navigate = useNavigate()
-  const handleLogout = () => {
-    localStorage.removeItem('accessToken')
-    localStorage.removeItem('refreshToken')
-    setIsLoggedin(false)
-    console.log("logout")
-    navigate('/login')
-  }
+	const navigate = useNavigate();
+	const handleLogout = () => {
+		localStorage.removeItem("accessToken");
+		localStorage.removeItem("refreshToken");
+		setIsLoggedin(false);
+		console.log("logout");
+		navigate("/login");
+	};
 	return (
 		<>
 			<nav className="navbar container pt-3 pb-3 align-items-start">
@@ -20,7 +20,15 @@ const Header = () => {
 				</Link>
 				{IsLoggedin ? (
 					
-          <button  className="btn btn-danger" onClick={handleLogout}>Logout</button>
+					<>
+					
+					<Button text ="Dashboard" class ="btn-outline-info" url = "/dashboard" />
+					
+					<button className="btn btn-danger" onClick={handleLogout}>
+						Logout
+					</button>
+					</>
+					
 				) : (
 					<>
 						<div>

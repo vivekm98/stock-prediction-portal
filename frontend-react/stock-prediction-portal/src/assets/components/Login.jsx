@@ -23,9 +23,8 @@ const Login = () => {
       localStorage.setItem('accessToken',response.data.access)
       localStorage.setItem('refreshToken',response.data.refresh)
       console.log("login successfull")
-      Setloading(true)
       setIsLoggedin(true)
-      navigate('/')
+      navigate('/dashboard')
     }catch(error){
       console.error("invalid credential")
       setError("invalid credential")
@@ -45,7 +44,7 @@ const Login = () => {
               
             </div>
             <div className='mb-3'>
-              <input type="password" className='form-control' placeholder='Set Pasword' value={password} onChange={(e)=>SetPassword(e.target.value)} />
+              <input type="password" autoComplete='current-password' className='form-control' placeholder='Set Password' value={password} onChange={(e)=>SetPassword(e.target.value)} />
              
             </div>
 
