@@ -6,10 +6,10 @@ import Footer from "./assets/components/Footer";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Register from "./assets/components/Register";
 import Login from "./assets/components/Login";
-import AuthProvider from "./AuthProvider";
+import AuthProvider from "./assets/components/AuthProvider";
 import Dashboard from "./assets/components/dashboard/Dashboard";
-import PrivateRoute from "./PrivateRoute";
-import PublicRoute from "./PublicRoute";
+import PrivateRoute from "./assets/components/PrivateRoute";
+import PublicRoute from "./assets/components/PublicRoute";
 function App() {
 	return (
 		<>
@@ -25,6 +25,7 @@ function App() {
 					<Footer />
 				</BrowserRouter>
 			</AuthProvider>
+		
 		</>
 	);
 }

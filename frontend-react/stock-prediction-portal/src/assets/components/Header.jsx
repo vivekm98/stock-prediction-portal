@@ -1,15 +1,15 @@
 import { useContext } from "react";
 import Button from "./Button";
 import { Link, useNavigate } from "react-router-dom";
-import { AuthContext } from "../../AuthProvider";
+import { AuthContext } from "./AuthProvider";
+
 const Header = () => {
-	const { IsLoggedin, setIsLoggedin } = useContext(AuthContext);
+	const {isLoggedIn,setIsLoggedIn} = useContext(AuthContext);
 	const navigate = useNavigate();
-	const handleLogout = () => {
+	const logout = () => {
 		localStorage.removeItem("accessToken");
 		localStorage.removeItem("refreshToken");
-		setIsLoggedin(false);
-		console.log("logout");
+		setIsLoggedIn(false);
 		navigate("/login");
 	};
 	return (
@@ -18,15 +18,13 @@ const Header = () => {
 				<Link className="navbar-brand text-light" href="" to="/">
 					Stock prediction portal
 				</Link>
-				{IsLoggedin ? (
-					
+				{isLoggedIn ? (
 					<>
-					
-					<Button text ="Dashboard" class ="btn-outline-info" url = "/dashboard" />
-					
-					<button className="btn btn-danger" onClick={handleLogout}>
-						Logout
-					</button>
+					<div>
+						<Button text ="Dashboard" class ="btn-outline-info mr-3" url = "/dashboard" />
+					     &nbsp;
+					    <button className="btn btn-danger" onClick={logout}>Logout</button>
+					</div>
 					</>
 					
 				) : (
