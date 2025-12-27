@@ -162,9 +162,9 @@ Content-Type: application/json
 
 ## 📷 Screenshots
 
-Base page :(screenshots/home.png)
 
-![Prediction Page](screenshots/predictions.png)
+![Base Page](screenshots/home.png)
+![Prediction Page](screenshots/prediction.png)
 ```
 
 ---
