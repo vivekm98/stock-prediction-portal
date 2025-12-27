@@ -162,9 +162,6 @@ Content-Type: application/json
 
 ## 📷 Screenshots
 
-
-
-```markdown
 Base page :(screenshots/home.png)
 
 ![Prediction Page](screenshots/predictions.png)
