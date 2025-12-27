@@ -164,6 +164,9 @@ Content-Type: application/json
 
 
 ![Base Page](screenshots/home.png)
+![Home Page](screenshots/home1.png)
+![Register Page](screenshots/register.png)
+![login Page](screenshots/login.png)
 ![Prediction Page](screenshots/prediction.png)
 ```
 
