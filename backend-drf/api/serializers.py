@@ -1,4 +1,5 @@
 from rest_framework import serializers
 
-class TickerSerializer(serializers.Serializer):
+
+class StockSerializer(serializers.Serializer):
     ticker = serializers.CharField(max_length=20)
