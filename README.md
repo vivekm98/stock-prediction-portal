@@ -19,20 +19,6 @@ This project demonstrates real-world implementation of **REST APIs**, **authenti
 
 ---
 
-## 🏗 Project Architecture
-
-
-
-stock-prediction-portal/
-├── backend-drf/                     # Django REST API
-├── frontend-react/
-│   └── stock-prediction-portal/     # React Frontend
-├── screenshots/                     # UI Screenshots
-├── requirements.txt                # Backend dependencies
-└── .gitignore
-
-
-
 ---
 
 ## 🛠 Tech Stack
