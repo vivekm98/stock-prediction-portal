@@ -19,8 +19,6 @@ This project demonstrates real-world implementation of **REST APIs**, **authenti
 
 ---
 
----
-
 ## 🛠 Tech Stack
 
 | Layer | Technology |
@@ -197,6 +195,7 @@ This project is licensed under the **MIT License**.
 
 **Vivek More**
 🔗 GitHub: [https://github.com/vivekm98](https://github.com/vivekm98)
+Email: vivekmore45678@gmail.com
 
 ⭐ If you find this project useful, consider starring the repository!
 
