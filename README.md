@@ -76,6 +76,10 @@ npm start
 http://localhost:3000/
 ```
 
+You can find ticker symbols from:
+
+Yahoo Finance (https://finance.yahoo.com
+)
 ---
 
 ## 🔐 API Endpoints
