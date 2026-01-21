@@ -1,209 +1,225 @@
-# 📈 Stock Prediction Portal
-
-A full-stack stock prediction web application built using **React** and **Django REST Framework**.  
-The system provides **secure JWT-based authentication** and allows authenticated users to **predict stock prices** using a machine-learning model.
-
-This project demonstrates real-world implementation of **REST APIs**, **authentication**, and **frontend–backend integration**.
 
 ---
 
-## 🚀 Key Features
+# 📈 Stock Prediction Dashboard
 
-- 🔐 JWT Authentication (Access & Refresh Tokens)
-- 👤 User Registration & Login
-- 📊 Stock Price Prediction using ML
-- 🔒 Secure Protected APIs
-- 🌐 RESTful Backend with Django
-- ⚛️ Modern React Frontend
-- 🧩 Scalable & modular architecture
+**React + Django REST Framework + Machine Learning**
 
----
+A full-stack stock price prediction dashboard that allows users to enter a stock ticker (e.g. `AAPL`) and view:
 
-## 🛠 Tech Stack
-
-| Layer | Technology |
-|-----|-----------|
-| Frontend | React, JavaScript, Axios |
-| Backend | Django, Django REST Framework |
-| Authentication | JWT (SimpleJWT) |
-| Machine Learning | Python (Scikit-Learn / Custom Model) |
-| Database | SQLite (Default) |
-| API Style | REST |
+* Historical stock price plots
+* 100-day & 200-day moving averages
+* Final price prediction plot
+* Model evaluation metrics (MSE, RMSE, R²)
+* JWT-protected API access
 
 ---
 
-## ⚙️ Installation & Setup
+## 🧰 Tech Stack
 
-### 1️⃣ Clone Repository
+### Backend
+
+* Python
+* Django
+* Django REST Framework
+* JWT Authentication
+* Machine Learning (NumPy, Pandas, Scikit-learn, Matplotlib)
+
+### Frontend
+
+* React (Vite)
+* Axios
+* Bootstrap
+* Font Awesome
+
+---
+
+## 📂 Project Structure (Simplified)
+
+```
+project-root/
+│
+├── backend/
+│   ├── media/                # 🔴 MUST be created manually
+│   │   ├── AAPL_plot.png
+│   │   ├── AAPL_100_dma.png
+│   │   ├── AAPL_200_dma.png
+│   │   └── AAPL_final_prediction.png
+│   │
+│   ├── manage.py
+│   ├── settings.py
+│   └── urls.py
+│
+├── frontend/
+│   ├── public/
+│   ├── src/
+│   ├── .env                  # 🔴 MUST be created manually
+│   └── vite.config.js
+│
+└── README.md
+```
+
+---
+
+## ⚠️ IMPORTANT SETUP STEPS (DO NOT SKIP)
+
+---
+
+## 🗂️ 1. Create `media` Folder (Backend)
+
+Django **does NOT create this automatically**.
+
+From the `backend/` directory:
 
 ```bash
-git clone https://github.com/vivekm98/stock-prediction-portal.git
-cd stock-prediction-portal
-````
+mkdir media
+```
+
+All generated plots will be saved here:
+
+```
+backend/media/
+```
 
 ---
 
-### 2️⃣ Backend Setup (Django)
+## ⚙️ 2. Django Media Configuration
+
+### `settings.py`
+
+```python
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+```
+
+### `urls.py`
+
+```python
+from django.conf import settings
+from django.conf.urls.static import static
+
+urlpatterns = [
+    # your api routes
+]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+```
+
+Restart the Django server after this.
+
+---
+
+## 🌐 3. Create `.env` File (Frontend – Vite)
+
+Inside the **frontend/** directory, create a file named **`.env`**
+
+```env
+VITE_BACKEND_BASE_API=http://127.0.0.1:8000/api/v1
+VITE_BACKEND_ROOT=http://127.0.0.1:8000
+```
+
+⚠️ Notes:
+
+* Variable names **must start with `VITE_`**
+* Do **NOT** add a trailing slash
+* Restart React after creating or changing `.env`
+
+---
+
+## ▶️ 4. Run the Application
+
+### Backend
 
 ```bash
-cd backend-drf
-python -m venv venv
-source venv/bin/activate     # Windows: venv\Scripts\activate
-pip install -r requirements.txt
-python manage.py migrate
+cd backend
 python manage.py runserver
 ```
 
-📍 Backend URL:
+Backend will run at:
 
 ```
-http://127.0.0.1:8000/
+http://127.0.0.1:8000
 ```
 
 ---
 
-### 3️⃣ Frontend Setup (React)
+### Frontend
 
 ```bash
-cd frontend-react/stock-prediction-portal
+cd frontend
 npm install
-npm start
+npm run dev
 ```
 
-📍 Frontend URL:
+Frontend will run at:
 
 ```
-http://localhost:3000/
-```
-
-You can find ticker symbols from:
-
-Yahoo Finance (https://finance.yahoo.com
-)
----
-
-## 🔐 API Endpoints
-
-**Base URL**
-
-```
-http://127.0.0.1:8000/api/v1/
-```
-
-### 📌 Endpoints Table
-
-| Method | Endpoint           | Description               | Auth Required |
-| ------ | ------------------ | ------------------------- | ------------- |
-| POST   | `/register/`       | Register a new user       | ❌ No          |
-| POST   | `/token/`          | Login & obtain JWT tokens | ❌ No          |
-| POST   | `/token/refresh/`  | Refresh access token      | ❌ No          |
-| GET    | `/protected-view/` | Protected test endpoint   | ✅ Yes         |
-| POST   | `/predict/`        | Predict stock price       | ✅ Yes         |
-
----
-
-## 🔑 Authentication
-
-Protected endpoints require JWT **Access Token** in headers:
-
-```
-Authorization: Bearer <access_token>
+http://localhost:5173
 ```
 
 ---
 
-## 📊 Example: Stock Prediction API
+## 🔐 Authentication
 
-**Request**
+* JWT authentication is enabled
+* Access tokens are stored in `localStorage`
+* Protected endpoints require Authorization header
 
-```http
-POST /api/v1/predict/
-Authorization: Bearer <access_token>
-Content-Type: application/json
+---
 
-{
-  "symbol": "AAPL",
-  "days": 30
-}
-```
-
-**Response**
+## 📊 Prediction API Response (Example)
 
 ```json
 {
-  "symbol": "AAPL",
-  "predicted_price": 185.75
+  "status": "success",
+  "plot_img": "/media/AAPL_plot.png",
+  "plot_100_dma": "/media/AAPL_100_dma.png",
+  "plot_200_dma": "/media/AAPL_200_dma.png",
+  "pltot_prediction": "/media/AAPL_final_prediction.png",
+  "mse": 0.23,
+  "rmse": 0.48,
+  "r2": 0.91
 }
 ```
 
----
+Frontend automatically builds full image URLs using:
 
-## 🔐 Authentication Flow
-
-1. User registers via `/register/`
-2. Logs in using `/token/`
-3. Receives access & refresh tokens
-4. Uses access token for protected APIs
-5. Refreshes token using `/token/refresh/`
-
----
-
-## 📷 Screenshots
-
-
-![Base Page](screenshots/home.png)
-![Home Page](screenshots/home1.png)
-![Register Page](screenshots/register.png)
-![login Page](screenshots/login.png)
-![Prediction Page](screenshots/prediction1.png)
-![Prediction Page](screenshots/prediction4.png)
-![Evaluation Page](screenshots/evaluation.png)
-
+```
+VITE_BACKEND_ROOT + image_path
 ```
 
 ---
 
-## 📦 Dependencies
+## 🧪 Troubleshooting
 
-Backend dependencies are listed in:
+### ❌ Images not loading (`ERR_CONNECTION_REFUSED`)
+
+✔ Backend must be running
+✔ `media/` folder must exist
+✔ Correct port (`8000`, not `800`)
+✔ `.env` file created and React restarted
+
+Test image directly in browser:
 
 ```
-requirements.txt
-```
-
-Frontend dependencies are managed via:
-
-```
-package.json
+http://127.0.0.1:8000/media/AAPL_plot.png
 ```
 
 ---
 
 ## 🚀 Future Improvements
 
-* 📉 Historical stock charts
-* 📊 Multiple ML model comparison
-* ☁️ Cloud deployment (AWS / Render / Vercel)
-* 📁 User prediction history
-* 🧪 Unit & integration testing
-
----
-
-## 📜 License
-
-This project is licensed under the **MIT License**.
+* Docker support
+* Production deployment (Nginx + Gunicorn)
+* Real-time stock updates
+* Multiple ticker comparison
+* User watchlists
 
 ---
 
 ## 👨‍💻 Author
 
 **Vivek More**
-🔗 GitHub: [https://github.com/vivekm98](https://github.com/vivekm98)
-Email: vivekmore45678@gmail.com
 
-⭐ If you find this project useful, consider starring the repository!
-
-```
-
- 
-
+---
