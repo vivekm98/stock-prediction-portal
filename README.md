@@ -189,10 +189,17 @@ http://localhost:5173
 ![Dashboard UI](./screenshots/dashboard.png)
 
 ### 📈 Prediction Output
-![Prediction Output](./screenshots/prediction.png)
+![Prediction Output](./screenshots/home.png)
 
 ### 📉 Moving Averages Chart
-![Moving Averages](./screenshots/moving_averages.png)
+![Moving Averages](./screenshots/prediction1.png)
+
+![Moving Averages](./screenshots/prediction2.png)
+
+![Moving Averages](./screenshots/prediction3.png)
+
+![Moving Averages](./screenshots/evaluation.png)
+
 
 
 Frontend automatically builds full image URLs using:
