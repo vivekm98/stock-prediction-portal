@@ -183,6 +183,18 @@ http://localhost:5173
 }
 ```
 
+## 📊 App Screenshots
+
+### 🎛 Dashboard UI
+![Dashboard UI](./screenshots/dashboard.png)
+
+### 📈 Prediction Output
+![Prediction Output](./screenshots/prediction.png)
+
+### 📉 Moving Averages Chart
+![Moving Averages](./screenshots/moving_averages.png)
+
+
 Frontend automatically builds full image URLs using:
 
 ```
