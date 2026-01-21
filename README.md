@@ -188,9 +188,10 @@ http://localhost:5173
 ### 🎛 Dashboard UI
 ![Dashboard UI](./screenshots/dashboard.png)
 
-### 📈 Prediction Output
 ![Prediction Output](./screenshots/home.png)
 
+![Moving Averages](./screenshots/register.png)
+![Moving Averages](./screenshots/login.png)
 ### 📉 Moving Averages Chart
 ![Moving Averages](./screenshots/prediction1.png)
 
@@ -198,6 +199,7 @@ http://localhost:5173
 
 ![Moving Averages](./screenshots/prediction3.png)
 
+### 📈 Prediction Output
 ![Moving Averages](./screenshots/evaluation.png)
 
 
