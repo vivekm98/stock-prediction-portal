@@ -212,21 +212,6 @@ VITE_BACKEND_ROOT + image_path
 
 ---
 
-## 🧪 Troubleshooting
-
-### ❌ Images not loading (`ERR_CONNECTION_REFUSED`)
-
-✔ Backend must be running
-✔ `media/` folder must exist
-✔ Correct port (`8000`, not `800`)
-✔ `.env` file created and React restarted
-
-Test image directly in browser:
-
-```
-http://127.0.0.1:8000/media/AAPL_plot.png
-```
-
 ---
 
 ## 🚀 Future Improvements
